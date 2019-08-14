@@ -7,12 +7,13 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.get("/movies", (req, res, next) => {
+router.get('/movies', (req, res, next) => {
   Movie.find().then(movies => {
-    res.movies("movies", { movies })
+    res.render("movies", { movies })
   }).catch((err) => {
     console.log(err)
-  })
+  });
+
 });
 
 router.get('/movie/:id', (req, res, next) => {
@@ -20,7 +21,8 @@ router.get('/movie/:id', (req, res, next) => {
     res.render("movie", { movie })
   }).catch((err) => {
     console.log(err)
-  })
+  });
+
 });
 
 module.exports = router;
